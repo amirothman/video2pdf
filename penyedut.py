@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 import youtube_dl
+import sys
 
 class Downloader:
     def __init__(self,url):
@@ -20,6 +21,9 @@ class Downloader:
             downloaded = ydl.download([self.url])
         return self.file_name
 
-downloader = Downloader("https://www.youtube.com/watch?v=LL9YgFEHW5U")
+downloader = Downloader(sys.argv[1])
 filename = downloader.download()
+
 print(filename)
+with open("filename.tmp","w") as _f:
+    _f.write(filename)
